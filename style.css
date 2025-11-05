@@ -1,0 +1,193 @@
+:root {
+    --bg-light: #f6f7fb;
+    --bg-dark: #07060a;
+    --text-light: #0b0b0d;
+    --text-dark: #f3f3f6;
+    --accent-start: #ff4dd2;
+    --accent-end: #9b6bff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'SF Pro Display', 'Inter', sans-serif;
+}
+
+body {
+    background: var(--bg-dark);
+    color: var(--text-dark);
+    transition: background 0.6s ease, color 0.6s ease;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body.light {
+    background: var(--bg-light);
+    color: var(--text-light);
+}
+
+.container {
+    max-width: 80%;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.profile {
+    margin-top: 4rem;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.profile img {
+    width: 30%;
+    height: 30%;
+    border-radius: 50%;
+    box-shadow: 0 6px 14px rgba(202, 18, 219, 0.274);
+}
+
+.info h1 {
+    margin-left: 2rem;
+    font-size: 1.6rem;
+    background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.info p {
+    margin-left: 2rem;
+    font-size: 0.9rem;
+    opacity: 0.75;
+}
+
+/* Toggle iPhone style */
+.theme-toggle {
+    position: relative;
+}
+
+.slider {
+    display: block;
+    width: 50px;
+    height: 28px;
+    background: #ccc;
+    border-radius: 999px;
+    position: relative;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.slider::before {
+    content: "";
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 22px;
+    height: 22px;
+    background: white;
+    border-radius: 50%;
+    transition: transform 0.4s ease, background 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+input[type="checkbox"]:checked+.slider {
+    background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
+}
+
+input[type="checkbox"]:checked+.slider::before {
+    transform: translateX(22px);
+}
+
+/* Cards */
+main {
+    display: grid;
+    gap: 16px;
+    width: 100%;
+}
+
+.card {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.card img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 20px;
+    background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.5));
+    opacity: 0;
+    transition: opacity 0.4s ease, backdrop-filter 0.4s ease;
+    color: white;
+    backdrop-filter: blur(0px);
+}
+
+.card:hover .overlay {
+    opacity: 1;
+    backdrop-filter: blur(8px);
+}
+
+.overlay h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.overlay p {
+    font-size: 0.9rem;
+    opacity: 0.85;
+    margin-top: 4px;
+}
+
+/* Footer */
+footer {
+
+    font-size: 0.85rem;
+    opacity: 0.7;
+    margin: 2rem 0;
+}
+
+footer a {
+    color: var(--accent-end);
+    text-decoration: none;
+}
+
+@media (max-width: 480px) {
+    .card img {
+        height: 220px;
+    }
+}
