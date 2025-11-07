@@ -132,14 +132,14 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    aspect-ratio: 16 / 9; /* mantém proporção uniforme e evita cortes */
-    background: #000; /* fundo neutro se a imagem não preencher tudo */
+    aspect-ratio: 16 / 9; /* mantém proporção uniforme no desktop */
+    background: transparent; /* sem fundo preto */
 }
 
 .card img {
     width: 100%;
     height: auto;
-    object-fit: contain; /* garante imagem inteira sem cortes */
+    object-fit: contain; /* mostra a imagem completa */
     border-radius: 20px;
     display: block;
 }
@@ -194,7 +194,8 @@ footer a {
 /* Mobile */
 @media (max-width: 480px) {
     .card {
-        aspect-ratio: auto; /* permite altura dinâmica em telas pequenas */
+        aspect-ratio: auto; /* altura livre no mobile */
+        background: transparent; /* sem fundo escuro */
     }
 
     .card img {
